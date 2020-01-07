@@ -1,10 +1,10 @@
 #if NET40
 using System.Collections;
+using System.Reflection;
 #endif
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -15,13 +15,12 @@ namespace Dragablz.Core
     {
         public static IEnumerable<TContainer> Containers<TContainer>(this ItemsControl itemsControl) where TContainer : class
         {
-#if NET45
-            for (var i = 0; i < itemsControl.ItemContainerGenerator.Items.Count; i++)
-#endif
 #if NET40
             var fieldInfo = typeof(ItemContainerGenerator).GetField("_items", BindingFlags.NonPublic | BindingFlags.Instance);
             var list = (IList)fieldInfo.GetValue(itemsControl.ItemContainerGenerator);
             for (var i = 0; i < list.Count; i++)
+#else
+            for (var i = 0; i < itemsControl.ItemContainerGenerator.Items.Count; i++)
 #endif
             {
                 var container = itemsControl.ItemContainerGenerator.ContainerFromIndex(i) as TContainer;
