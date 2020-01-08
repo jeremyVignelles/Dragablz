@@ -12,7 +12,7 @@
     <PackageTags>WPF TabControl Tab Tearable</PackageTags>
     <PackageReleaseNotes>Support for .Net Core 3.0</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
-    <VersionPrefix>0.0.4</VersionPrefix>
+    <VersionPrefix>0.0.4.2</VersionPrefix>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
